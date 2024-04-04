@@ -1,0 +1,122 @@
+12.-------BFS DFS-------
+
+
+BFS
+import java.util.*;
+public class BFS {
+int V;
+LinkedList<Integer> adj[];
+BFS(int v)
+{
+ V = v;
+ adj = new LinkedList[v];
+ for(int i=0;i<v;i++)
+ {
+ adj[i] = new LinkedList();
+ }
+}
+void addEdges(int v,int e)
+{
+ adj[v].add(e);
+}
+void bFS(int s)
+{
+ boolean visited[] = new boolean[V];
+ Queue<Integer> queue = new
+LinkedList<Integer>();
+ visited[s] = true;
+ queue.add(s);
+
+ while(queue.size()!=0)
+ {
+ s = queue.poll();
+ System.out.print(s + " ");
+
+ Iterator<Integer> i =
+adj[s].listIterator();
+ while(i.hasNext())
+ {
+ int n = i.next();
+if(visited[n] == false)
+{
+ visited[n] =
+true;
+ queue.add(n);
+ }
+ }
+ }
+}
+public static void main(String[] args)
+{
+Scanner s = new Scanner(System.in);
+int n = s.nextInt();
+BFS graph = new BFS(n);
+int v,e;
+while(true) {
+ v = s.nextInt();
+ e = s.nextInt();
+ if (v == -1 && e == -1) {
+ break;
+ }
+ graph.addEdges(v, e);
+}
+int S = s.nextInt();
+System.out.print("BFS: " );
+graph.bFS(S);
+}
+}
+DFS
+import java.util.*;
+public class DFS {
+int V;
+LinkedList<Integer> adj[];
+DFS(int v)
+{
+ V = v;
+ adj = new LinkedList[v];
+ for(int i=0;i<v;i++)
+ {
+ adj[i] = new LinkedList();
+ }
+}
+void addEdges(int v,int e)
+{
+ adj[v].add(e);
+}
+void dFSrec(int s, boolean[] visited)
+{
+ visited[s] = true;
+ System.out.print(s+" ");
+
+ Iterator<Integer> i = adj[s].listIterator();
+ while(i.hasNext())
+ {
+ int n = i.next();
+ if(visited[n]==false)
+ dFSrec(n,visited);
+ }
+}
+void dFS(int s)
+{
+ boolean visited[] = new boolean[V];
+ dFSrec(s,visited);
+}
+public static void main(String[] args)
+{
+Scanner s = new Scanner(System.in);
+int n = s.nextInt();
+DFS graph = new DFS(n);
+int v,e;
+while(true)
+{
+ v = s.nextInt();
+ e = s.nextInt();
+ if(v == -1 && e == -1)
+ break;
+ graph.addEdges(v,e);
+}
+int S = s.nextInt();
+System.out.print("DFS : ");
+graph.dFS(S);
+}
+}
