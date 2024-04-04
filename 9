@@ -1,0 +1,60 @@
+9.----Topological Sort----
+
+
+
+import java.util.*;
+public class TopologicalSort {
+int V;
+LinkedList<Integer> adj[];
+TopologicalSort(int v)
+{
+ V = v;
+ adj = new LinkedList[v];
+ for(int i=0;i<v;i++)
+ {
+ adj[i] = new LinkedList();
+ }
+}
+void addEdges(int v,int e)
+{
+ adj[v].add(e);
+}
+void TopoSortRec(int s, boolean visited[],
+Stack<Integer>stack)
+{
+
+}
+void TopoSort()
+{
+ Stack<Integer> stack = new Stack<Integer>();
+ boolean visited[] = new boolean[V];
+ for(int i=0;i<V;i++)
+ {
+ if(visited[i] = false)
+ {
+ TopoSortRec(i, visited,
+stack);
+ }
+ }
+ while (stack.empty() == false)
+ System.out.print(stack.pop() + " ");
+
+}
+public static void main(String[] args)
+{
+Scanner s = new Scanner(System.in);
+int n = s.nextInt();
+TopologicalSort graph = new TopologicalSort(n);
+int v,e;
+while(true)
+{
+ v = s.nextInt();
+ e = s.nextInt();
+ if(v == -1 && e == -1)
+ break;
+ graph.addEdges(v,e);
+}
+graph.topoSort();
+}
+}
+
